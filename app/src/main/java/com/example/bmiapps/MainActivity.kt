@@ -2,6 +2,7 @@ package com.example.bmiapps
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextClock
@@ -9,7 +10,7 @@ import android.widget.TextView
 import android.widget.Toast
 import java.security.interfaces.EdECKey
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -17,6 +18,9 @@ class MainActivity : AppCompatActivity() {
         val weightEd = findViewById<EditText>(R.id.numberWeight)
         val heightEd = findViewById<EditText>(R.id.numberHeight)
         val btnCalc = findViewById<Button>(R.id.btnCalculate)
+        val btnInfo = findViewById<Button>(R.id.btnInfo)
+
+        btnInfo.setOnClickListener(this)
 
         btnCalc.setOnClickListener {
             val w = weightEd.text.toString()
@@ -58,5 +62,16 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+    }
+
+    override fun onClick(v: View?) {
+        when(v?.id) {
+            R.id.btnCalculate ->{
+
+            }
+            R.id.btnInfo ->{
+                Toast.makeText(this, "Info", Toast.LENGTH_LONG).show()
+            }
+        }
     }
 }
